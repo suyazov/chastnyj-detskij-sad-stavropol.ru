@@ -1,0 +1,125 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Vanilla JS phone mask — replaces jQuery.maskedinput
+  document.querySelectorAll('input[data-mask]').forEach(function(input) {
+    var mask = input.getAttribute('data-mask');
+    if (!mask) return;
+    var defs = {'_':'[0-9]'};
+    var placeholder = mask.replace(/[_]/g, '_');
+
+    function setPos(evt) {
+      var pos = 0;
+      for (var i = 0; i < mask.length && pos < input.value.length; i++) {
+        if (mask[i] === '_') pos++;
+      }
+    }
+
+    function applyMask(val) {
+      var result = '', vi = 0;
+      for (var i = 0; i < mask.length && vi < val.length; i++) {
+        if (mask[i] === '_') {
+          if (/[0-9]/.test(val[vi])) { result += val[vi]; vi++; }
+          else break;
+        } else {
+          result += mask[i];
+          if (val[vi] === mask[i]) vi++;
+        }
+      }
+      return result;
+    }
+
+    input.addEventListener('input', function(e) {
+      var old = input.value;
+      var digits = old.replace(/\D/g, '');
+      var newVal = applyMask(digits);
+      input.value = newVal;
+      var pos = input.selectionStart;
+      if (pos > newVal.length) pos = newVal.length;
+      input.setSelectionRange(pos, pos);
+    });
+
+    input.addEventListener('focus', function() {
+      if (!input.value) {
+        var prefix = '';
+        for (var i = 0; i < mask.length; i++) {
+          if (mask[i] !== '_') prefix += mask[i];
+          else break;
+        }
+        if (prefix) input.value = prefix;
+      }
+    });
+  });
+
+  // Defer Swiper init to avoid forced reflow
+  function initSwipers() {
+    if (document.querySelector(".swiper1")) {
+      new Swiper(".swiper1", {
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        breakpoints: { 768: { slidesPerView: 4, spaceBetween: 40 } },
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 20,
+      });
+    }
+    if (document.querySelector(".swiper2")) {
+      new Swiper(".swiper2", {
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        breakpoints: { 768: { slidesPerView: 3, spaceBetween: 30 } },
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 20,
+      });
+    }
+  }
+  if (window.requestIdleCallback) {
+    requestIdleCallback(initSwipers, { timeout: 2000 });
+  } else {
+    setTimeout(initSwipers, 100);
+  }
+
+  // Accordion
+  document.querySelectorAll(".accordeon__head").forEach(function (item) {
+    item.addEventListener("click", function () {
+      var body = this.nextElementSibling;
+      body.style.display = body.style.display === "block" ? "none" : "block";
+      var icon = this.querySelector(".icon");
+      if (icon) {
+        icon.style.transform = icon.style.transform === "rotate(180deg)" ? "rotate(0deg)" : "rotate(180deg)";
+      }
+    });
+  });
+
+  // Simple tooltip fallback (no Bootstrap needed)
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+    el.addEventListener("mouseenter", function () {
+      var tip = this.getAttribute("data-bs-title") || this.getAttribute("title");
+      if (!tip) return;
+      var box = document.createElement("div");
+      box.className = "bs-tooltip";
+      box.textContent = tip;
+      box.style.cssText = "position:absolute;background:#000;color:#fff;padding:6px 12px;border-radius:4px;font-size:13px;z-index:9999;white-space:nowrap;pointer-events:none";
+      document.body.appendChild(box);
+      var r = this.getBoundingClientRect();
+      box.style.top = r.top - box.offsetHeight - 8 + window.scrollY + "px";
+      box.style.left = r.left + r.width / 2 - box.offsetWidth / 2 + "px";
+      this._tooltip = box;
+    });
+    el.addEventListener("mouseleave", function () {
+      if (this._tooltip) { this._tooltip.remove(); this._tooltip = null; }
+    });
+  });
+
+  // Smooth scroll for anchor links — scroll to form inside #cta block
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId.length < 2) return;
+      var target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      var formArea = target.querySelector('.cta_row-row') || target;
+      formArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+});

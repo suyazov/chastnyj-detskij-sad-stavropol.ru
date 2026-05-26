@@ -1,0 +1,37 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header .menu-menu-1-container {
+    display: none;
+  }
+
+  .mobile-burger {
+    display: block;
+  }
+
+  .mobile-burger a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .mobile-burger i {
+    font-size: 28px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .year__item {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .bonus__cell {
+    height: 140px;
+  }
+
+  .year__item img {
+    width: 100%;
+  }
+
+  .cta__contact-wrap .tel {
+    font-size: 26px;
+  }
+}

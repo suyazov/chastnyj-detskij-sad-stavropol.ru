@@ -1,0 +1,16 @@
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/cache/
+wp-content/wp-cache-config.php
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+wp-content/plugins/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-config.php
+*.log
+*.sql
+*.sql.gz
+.DS_Store
