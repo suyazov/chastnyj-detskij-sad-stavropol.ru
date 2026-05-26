@@ -5,14 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var mask = input.getAttribute('data-mask');
     if (!mask) return;
     var defs = {'_':'[0-9]'};
-    var placeholder = mask.replace(/[_]/g, '_');
-
-    function setPos(evt) {
-      var pos = 0;
-      for (var i = 0; i < mask.length && pos < input.value.length; i++) {
-        if (mask[i] === '_') pos++;
-      }
-    }
 
     function applyMask(val) {
       var result = '', vi = 0;
@@ -29,12 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     input.addEventListener('input', function(e) {
-      var old = input.value;
-      var digits = old.replace(/\D/g, '');
-      var newVal = applyMask(digits);
-      input.value = newVal;
+      var digits = input.value.replace(/\D/g, '');
+      input.value = applyMask(digits);
       var pos = input.selectionStart;
-      if (pos > newVal.length) pos = newVal.length;
+      if (pos > input.value.length) pos = input.value.length;
       input.setSelectionRange(pos, pos);
     });
 
@@ -77,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(initSwipers, 100);
   }
 
-  // Accordion
+  // Accordion — chevron rotates via CSS on .icon
   document.querySelectorAll(".accordeon__head").forEach(function (item) {
     item.addEventListener("click", function () {
       var body = this.nextElementSibling;
