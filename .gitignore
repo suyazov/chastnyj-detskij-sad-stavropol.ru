@@ -14,7 +14,6 @@ wp-content/smush-webp/
 wp-content/themes/index.php
 
 # Sensitive files
-CONTEXT.md
 favicon.ico
 
 # Plugins and languages managed by Composer
