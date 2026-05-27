@@ -127,7 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
       dragToClose: true
     });
     Fancybox.bind('[data-fancybox="videopresentation"]', {
-      type: 'iframe',
+      type: 'html5video',
+      videoAutoplay: true,
+      videoRatio: 16/9,
       toolbar: {
         display: {
           left: [],
