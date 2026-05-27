@@ -126,17 +126,10 @@ document.addEventListener("DOMContentLoaded", function () {
       infinite: true,
       dragToClose: true
     });
+    // Video - let Fancybox auto-detect the type from .mp4 extension
     Fancybox.bind('[data-fancybox="videopresentation"]', {
-      type: 'html5video',
-      videoAutoplay: true,
-      videoRatio: 16/9,
-      toolbar: {
-        display: {
-          left: [],
-          middle: [],
-          right: ['close']
-        }
-      }
+      infinite: false,
+      videoAutoplay: true
     });
   }
 
