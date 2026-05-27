@@ -134,15 +134,14 @@ document.addEventListener("DOMContentLoaded", function () {
   if (cf7Form) {
     var now = Math.floor(Date.now() / 1000);
     var honeypot = document.createElement('div');
-    honeypot.style.position = 'absolute';
-    honeypot.style.left = '-9999px';
+    honeypot.style.cssText = 'position:absolute;left:-9999px;';
     honeypot.innerHTML = '<label>Do not fill: <input type="text" name="hp_website" tabindex="-1" autocomplete="off"></label>';
     var timestamp = document.createElement('input');
     timestamp.type = 'hidden';
     timestamp.name = 'form_start_time';
     timestamp.value = now;
     
-    var hiddenDiv = cf7Form.querySelector('div[style*="display: none"]');
+    var hiddenDiv = cf7Form.querySelector('div[style*="display: none"], div[style*="display:none"]');
     if (hiddenDiv) {
       hiddenDiv.appendChild(honeypot);
       hiddenDiv.appendChild(timestamp);
