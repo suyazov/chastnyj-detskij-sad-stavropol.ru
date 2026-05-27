@@ -18,15 +18,18 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    <?php if ( is_front_page() ): ?>
+    <link rel="preload" as="image" href="/wp-content/uploads/2024/04/screenshot_4.webp">
+    <?php endif; ?>
     <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/swiper-bundle.min.css" />
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/swiper-bundle.min.css" media="print" onload="this.media='all'" />
     <script src="<?php echo get_template_directory_uri(); ?>/js/fontawesome.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/fancybox.css" />
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/fancybox.css" media="print" onload="this.media='all'">
 
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-sm.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-md.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-sm.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-md.css" media="print" onload="this.media='all'">
 </head>
 
 

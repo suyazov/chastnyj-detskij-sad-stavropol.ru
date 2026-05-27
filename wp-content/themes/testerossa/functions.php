@@ -198,3 +198,17 @@ function testerossa_get_image_url( $image ) {
 
     return esc_url( $image );
 }
+
+/**
+ * Honeypot + timestamp spam protection for Contact Form 7
+ */
+require get_template_directory() . '/spam-protection.php';
+
+/**
+ * Disable Google reCAPTCHA scripts (using honeypot instead)
+ */
+add_action( 'wp_enqueue_scripts', 'disable_recaptcha_scripts', 100 );
+function disable_recaptcha_scripts() {
+    wp_dequeue_script( 'google-recaptcha' );
+    wp_dequeue_script( 'wpcf7-recaptcha' );
+}
