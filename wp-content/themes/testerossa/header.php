@@ -37,7 +37,7 @@
     <header class="header">
         <div class="container header__row">
             <a href="<?php echo home_url(); ?>" class="header__logo"><img src="/wp-content/uploads/2024/07/logo.png"
-                    alt=""></a>
+                    alt="Частный детский сад"></a>
             <?php
             wp_nav_menu(
                 array(
