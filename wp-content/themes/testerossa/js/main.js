@@ -112,4 +112,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Initialize Fancybox for galleries and videos
+  if (typeof Fancybox !== 'undefined') {
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      infinite: true,
+      dragToClose: true
+    });
+    Fancybox.bind('[data-fancybox="gallery-1"]', {
+      infinite: true,
+      dragToClose: true
+    });
+    Fancybox.bind('[data-fancybox="gallery-2"]', {
+      infinite: true,
+      dragToClose: true
+    });
+    Fancybox.bind('[data-fancybox="videopresentation"]', {
+      type: 'iframe',
+      toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ['close']
+        }
+      }
+    });
+  }
+
 });
