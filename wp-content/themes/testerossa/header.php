@@ -48,18 +48,18 @@
             ?>
 
             <div class="header__contact">
-                <a href="<?php the_field('tg', 'option'); ?>" class="header__contact-tg"><i
+                <a href="<?php the_field('tg', 'option'); ?>" class="header__contact-tg" aria-label="Telegram"><i
                         class="fa-brands fa-telegram"></i></a>
-                <a href="<?php the_field('wa', 'option'); ?>" class="header__contact-wa"><i
+                <a href="<?php the_field('wa', 'option'); ?>" class="header__contact-wa" aria-label="WhatsApp"><i
                         class="fa-brands fa-whatsapp"></i></a>
-                <a href="<?php the_field('vk', 'option'); ?>" class="header__contact-vk"><i
+                <a href="<?php the_field('vk', 'option'); ?>" class="header__contact-vk" aria-label="ВКонтакте"><i
                         class="fa-brands fa-vk"></i></a>
                 <div class="header__contact-phone">
-                    <i class="icon fa-solid fa-phone"></i>
+                    <i class="icon fa-solid fa-phone" aria-label="Телефон"></i>
                     <a href="tel:<?php the_field('tel_link', 'option'); ?>"><?php the_field('tel', 'option'); ?></a>
                 </div>
                 <a href="#" class="mobile-burger" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasTop">
+                    data-bs-target="#offcanvasTop" aria-label="Меню">
                     <i class="fa-solid fa-bars"></i>
                 </a>
             </div>
