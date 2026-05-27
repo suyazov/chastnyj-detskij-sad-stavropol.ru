@@ -1,16 +1,22 @@
+# WordPress core files
+wp-admin/
+wp-includes/
+*.php
+
+# WordPress content
 wp-content/uploads/
 wp-content/upgrade/
 wp-content/backup-db/
 wp-content/backups/
 wp-content/cache/
-wp-content/wp-cache-config.php
-wp-content/advanced-cache.php
-wp-content/object-cache.php
+wp-content/backups-dup-lite/
+wp-content/smush-webp/
+wp-content/themes/index.php
+
+# Sensitive files
+CONTEXT.md
+favicon.ico
+
+# Plugins and languages managed by Composer
 wp-content/plugins/
-wp-content/upgrade/
-wp-content/backup-db/
-wp-config.php
-*.log
-*.sql
-*.sql.gz
-.DS_Store
+wp-content/languages/
