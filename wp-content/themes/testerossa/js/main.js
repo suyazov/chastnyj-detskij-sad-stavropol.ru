@@ -119,6 +119,36 @@ document.addEventListener("DOMContentLoaded", function () {
     lcpImg.removeAttribute('loading');
   }
 
+  // Fix ARIA attributes in CF7 form
+  document.querySelectorAll('input[name="mask-713"]').forEach(function(input) {
+    if (input.getAttribute('aria-required') === '1') {
+      input.setAttribute('aria-required', 'true');
+    }
+    if (input.getAttribute('aria-invalid') === '') {
+      input.setAttribute('aria-invalid', 'false');
+    }
+  });
+
+  // Add honeypot spam protection to CF7 forms
+  var cf7Form = document.querySelector('.wpcf7-form');
+  if (cf7Form) {
+    var now = Math.floor(Date.now() / 1000);
+    var honeypot = document.createElement('div');
+    honeypot.style.position = 'absolute';
+    honeypot.style.left = '-9999px';
+    honeypot.innerHTML = '<label>Do not fill: <input type="text" name="hp_website" tabindex="-1" autocomplete="off"></label>';
+    var timestamp = document.createElement('input');
+    timestamp.type = 'hidden';
+    timestamp.name = 'form_start_time';
+    timestamp.value = now;
+    
+    var hiddenDiv = cf7Form.querySelector('div[style*="display: none"]');
+    if (hiddenDiv) {
+      hiddenDiv.appendChild(honeypot);
+      hiddenDiv.appendChild(timestamp);
+    }
+  }
+
   // Initialize Fancybox for galleries and videos
   if (typeof Fancybox !== 'undefined') {
     Fancybox.bind('[data-fancybox="gallery"]', {
