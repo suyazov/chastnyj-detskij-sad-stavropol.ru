@@ -151,23 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize Fancybox for galleries and videos
   if (typeof Fancybox !== 'undefined') {
-    Fancybox.bind('[data-fancybox="gallery"]', {
-      infinite: true,
-      dragToClose: true
-    });
-    Fancybox.bind('[data-fancybox="gallery-1"]', {
-      infinite: true,
-      dragToClose: true
-    });
-    Fancybox.bind('[data-fancybox="gallery-2"]', {
-      infinite: true,
-      dragToClose: true
-    });
-    // Video - let Fancybox auto-detect the type from .mp4 extension
-    Fancybox.bind('[data-fancybox="videopresentation"]', {
+    console.log('Fancybox loaded, initializing...');
+    Fancybox.bind('[data-fancybox]', {
       infinite: false,
       videoAutoplay: true
     });
+  } else {
+    console.log('Fancybox not found');
   }
 
 });
