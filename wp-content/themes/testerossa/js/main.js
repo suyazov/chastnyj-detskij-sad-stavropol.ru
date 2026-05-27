@@ -112,6 +112,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // LCP image optimization - fetchpriority
+  var lcpImg = document.querySelector('img[src*="screenshot_4"]');
+  if (lcpImg) {
+    lcpImg.setAttribute('fetchpriority', 'high');
+    lcpImg.removeAttribute('loading');
+  }
+
   // Initialize Fancybox for galleries and videos
   if (typeof Fancybox !== 'undefined') {
     Fancybox.bind('[data-fancybox="gallery"]', {
