@@ -31,7 +31,7 @@ while (have_rows('build')) : the_row();
 
                         <div class="col-md-4">
                             <div class="main__item">
-                                <img src="<?php the_sub_field('img'); ?>" alt="" class="main__item-img">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" class="main__item-img">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ while (have_rows('build')) : the_row();
             </div>
         </div>
 
-    <? elseif (get_row_layout() == 'video'): ?>
+    <?php  elseif (get_row_layout() == 'video'): ?>
 
         <section class="presentation" id="about">
             <div class="container">
@@ -50,7 +50,7 @@ while (have_rows('build')) : the_row();
                     <div class="col-md-8">
                         <div class="video__item ratio ratio-16x9">
                             <a href="<?php the_sub_field('video'); ?>" data-fancybox="videopresentation">
-                                <img src="<?php the_sub_field('preview'); ?>" class="ratio ratio-16x9 w-100">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100">
                                 <i class="fa-brands fa-youtube icon-play"></i>
                             </a>
 
@@ -61,7 +61,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'bullets'): ?>
+    <?php  elseif (get_row_layout() == 'bullets'): ?>
         <section class="imagine color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -70,7 +70,7 @@ while (have_rows('build')) : the_row();
                     while (have_rows('bullets_row')) : the_row(); ?>
                         <div class="col-md-4">
                             <div class="imagine__item">
-                                <img src="<?php the_sub_field('img'); ?>" alt="">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'year'): ?>
+    <?php  elseif (get_row_layout() == 'year'): ?>
         <section class="year">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -87,7 +87,7 @@ while (have_rows('build')) : the_row();
                     while (have_rows('year_row')) : the_row(); ?>
                         <div class="col-md-3">
                             <div class="year__item">
-                                <img src="<?php the_sub_field('img'); ?>" alt="">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ while (have_rows('build')) : the_row();
                 </p>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'gallery_1'): ?>
+    <?php  elseif (get_row_layout() == 'gallery_1'): ?>
         <section class="gallery-inter color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -108,8 +108,8 @@ while (have_rows('build')) : the_row();
                             <?php
                             while (have_rows('gallery_1_row')) : the_row(); ?>
                                 <div class="swiper-slide">
-                                    <a href="<?php the_sub_field('img'); ?>" data-fancybox="gallery-2"><img
-                                            src="<?php the_sub_field('img'); ?>" alt=""></a>
+                                    <a href="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" data-fancybox="gallery-2"><img
+                                            src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt=""></a>
                                 </div>
                             <?php endwhile; ?>
                         </div>
@@ -123,7 +123,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'programm'): ?>
+    <?php  elseif (get_row_layout() == 'programm'): ?>
         <section class="programm" id="prog">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -149,18 +149,18 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'osnova'): ?>
+    <?php  elseif (get_row_layout() == 'osnova'): ?>
         <section class="method color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
                 <div class="method__block">
-                    <img src="<?php the_sub_field('img'); ?>" alt="">
+                    <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
                     <?php the_sub_field('text'); ?>
                 </div>
 
             </div>
         </section>
-    <? elseif (get_row_layout() == 'history'): ?>
+    <?php  elseif (get_row_layout() == 'history'): ?>
         <section class="history">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -174,10 +174,10 @@ while (have_rows('build')) : the_row();
                         </div>
                     </div>
                     <div class="schema__item green-border borrad-20 h-100 schema__item-2">
-                        <img src="<?php the_sub_field('img_1'); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_1')); ?>" alt="">
                     </div>
                     <div class="schema__item green-border borrad-20 h-100 schema__item-3">
-                        <img src="<?php the_sub_field('img_2'); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_2')); ?>" alt="">
                     </div>
                     <div class="schema__item green-border schema__item-4">
                         <div class="schema__head green-bg"><?php the_sub_field('title_2'); ?></div>
@@ -188,7 +188,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'boss'): ?>
+    <?php  elseif (get_row_layout() == 'boss'): ?>
         <section class="boss color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -197,7 +197,7 @@ while (have_rows('build')) : the_row();
                         <p class="title-1"><?php the_sub_field('text_1'); ?>
                         </p>
                     </div>
-                    <div class="item item-2"><img src="<?php the_sub_field('img'); ?>" class="boss-img">
+                    <div class="item item-2"><img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" class="boss-img">
                     </div>
                     <div class="item item-3">
                         <p class="title-2"><?php the_sub_field('text_2'); ?></p>
@@ -209,7 +209,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'flat'): ?>
+    <?php  elseif (get_row_layout() == 'flat'): ?>
         <section class="gallery-inter">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -220,8 +220,8 @@ while (have_rows('build')) : the_row();
                             <?php $images = get_sub_field('gallery');
                             foreach ($images as $image) : ?>
                                 <div class="swiper-slide">
-                                    <a href="<?php echo $image; ?>" data-fancybox="gallery-1"><img
-                                            src="<?php echo $image; ?>" alt=""></a>
+                                    <a href="<?php echo testerossa_get_image_url($image); ?>" data-fancybox="gallery-1"><img
+                                            src="<?php echo testerossa_get_image_url($image); ?>" alt=""></a>
                                 </div>
                             <?php endforeach; ?>
 
@@ -233,7 +233,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'review'): ?>
+    <?php  elseif (get_row_layout() == 'review'): ?>
         <section class="gallery-inter color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -245,7 +245,7 @@ while (have_rows('build')) : the_row();
                                 <div class="swiper-slide">
                                     <div class="review__item">
                                         <a data-fancybox="gallery" href="<?php the_sub_field('video'); ?>">
-                                            <img src="<?php the_sub_field('img'); ?>" alt="">
+                                            <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
                                             <i class="fa-brands fa-youtube icon-play"></i>
                                         </a>
                                         <p class="title"><?php the_sub_field('name'); ?></p>
@@ -262,7 +262,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'price'): ?>
+    <?php  elseif (get_row_layout() == 'price'): ?>
         <section class="price" id="price">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -287,7 +287,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'bonus'): ?>
+    <?php  elseif (get_row_layout() == 'bonus'): ?>
         <section class="bonus">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -304,7 +304,7 @@ while (have_rows('build')) : the_row();
                 <p class="bonus__text"><?php the_sub_field('text'); ?></p>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'garantee'): ?>
+    <?php  elseif (get_row_layout() == 'garantee'): ?>
         <section class="garantee color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -314,7 +314,7 @@ while (have_rows('build')) : the_row();
                         <p class="title-1"><?php the_sub_field('text_1'); ?>
                         </p>
                     </div>
-                    <div class="item item-2"><img src="<?php the_sub_field('img'); ?>" class="boss-img">
+                    <div class="item item-2"><img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" class="boss-img">
                     </div>
                     <div class="item item-3">
                         <p class="title-2"><?php the_sub_field('text_2'); ?></p>
@@ -322,7 +322,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'faq'): ?>
+    <?php  elseif (get_row_layout() == 'faq'): ?>
         <section class="faq" id="faq">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -343,7 +343,7 @@ while (have_rows('build')) : the_row();
                 </div>
             </div>
         </section>
-    <? elseif (get_row_layout() == 'adv'): ?>
+    <?php  elseif (get_row_layout() == 'adv'): ?>
         <section class="three last-three color-bg">
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
@@ -351,7 +351,7 @@ while (have_rows('build')) : the_row();
                     <?php while (have_rows('adv_row')) : the_row(); ?>
                         <div class="col-md-4">
                             <div class="three__item">
-                                <img src="<?php the_sub_field('img'); ?>" alt="">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -366,7 +366,7 @@ while (have_rows('build')) : the_row();
 
                 <div class="cta__row">
                     <div class="cta__item cta__item-1">
-                        <img src="<?php the_sub_field('img_1'); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_1')); ?>" alt="">
                         <p class="name"><?php the_sub_field('title_1'); ?></p>
                         <p class="desc"><?php the_sub_field('desc_1'); ?></p>
                     </div>
@@ -397,7 +397,7 @@ while (have_rows('build')) : the_row();
                     </div>
                     <?php /*
                     <div class="cta__item cta__item-3">
-                        <img src="<?php the_sub_field('img_2'); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_2')); ?>" alt="">
                         <p class="name"><?php the_sub_field('title_2'); ?></p>
                         <p class="desc"><?php the_sub_field('desc_2'); ?></p>
                     </div> */ ?>

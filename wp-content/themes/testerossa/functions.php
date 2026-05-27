@@ -181,3 +181,20 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();
 	
 }
+// Helper function to get image URL from ACF field (handles attachment ID, URL, and ACF image array)
+function testerossa_get_image_url( $image ) {
+    if ( ! $image ) {
+        return '';
+    }
+
+    if ( is_array( $image ) && ! empty( $image['url'] ) ) {
+        return esc_url( $image['url'] );
+    }
+
+    if ( is_numeric( $image ) ) {
+        $url = wp_get_attachment_url( $image );
+        return $url ? esc_url( $url ) : '';
+    }
+
+    return esc_url( $image );
+}
