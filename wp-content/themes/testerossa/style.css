@@ -280,6 +280,8 @@ body {
   width: 100%;
   padding-bottom: 120px;
   min-height: 480px;
+  aspect-ratio: 16 / 7;
+  background: url("/wp-content/uploads/2024/07/main.webp") center/cover no-repeat;
 }
 
 .main-section__bg {
