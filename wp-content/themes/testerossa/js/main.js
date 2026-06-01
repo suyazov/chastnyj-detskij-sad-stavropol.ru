@@ -110,15 +110,15 @@ document.addEventListener("DOMContentLoaded", function () {
     tryInit();
   }
 
-  // Init immediately, then poll for deferred libraries
+  // Init immediately
   initDeferred();
-  // Swiper + Fancybox loaded dynamically via initLazyLibraries (no more polling)
 
-  // Intercept clicks on [data-fancybox] — load Fancybox on demand if not ready yet
-  document.addEventListener("click", function(e) {
-    var link = e.target.closest("[data-fancybox]");
-    if (!link || typeof Fancybox !== "undefined") return;
-    e.preventDefault();
+  // Swiper + Fancybox loaded via defer in footer — init when ready
+  pollUntilReady(function() {
+    if (typeof Swiper === "undefined" || typeof Fancybox === "undefined") return;
+    initSwipers();
+    initFancybox();
+  }, 10);
     e.stopPropagation();
     var href = link.getAttribute("href");
     if (!libsLoaded) { libsLoaded = true; loadLibs(); }
