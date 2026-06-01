@@ -22,6 +22,9 @@
     <?php endif; ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
+    <style>body{font-family:'Rubik',system-ui,-apple-system,sans-serif}</style>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
