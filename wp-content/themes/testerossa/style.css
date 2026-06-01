@@ -275,10 +275,10 @@ body {
 }
 
 .main-section {
-  /* background removed — now using <img> tag for LCP performance */
+  background: url("/wp-content/uploads/2024/07/main.webp");
   width: 100%;
-  /* background-size removed */
-  /* background-repeat removed */
+  background-size: cover;
+  background-repeat: no-repeat;
   padding-bottom: 120px;
 }
 
@@ -1294,34 +1294,8 @@ section h2 {
   top: 48%;
 }
 
-/* === LCP Fix — main-section background as <img> === */
-.main-section {
-  position: relative;
-  overflow: hidden;
-}
-
-.main-section__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  display: block;
-}
-
-.main-section .container {
-  position: relative;
-  z-index: 1;
-}
 
 /* === CLS Fixes === */
-.main-section {
-  aspect-ratio: 16 / 7;
-  min-height: 400px;
-}
-
 .main__item img {
   aspect-ratio: 1 / 1;
   object-fit: contain;

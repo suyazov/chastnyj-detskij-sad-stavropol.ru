@@ -10,7 +10,7 @@ while (have_rows('build')) : the_row();
 
     if (get_row_layout() == 'main'): ?>
 
-        <div class="main-section"><img src="/wp-content/uploads/2024/07/main.webp" class="main-section__bg" fetchpriority="high" width="1920" height="730" alt="Детский сад Дети в приоритете Ставрополь">
+        <div class="main-section">
             <div class="container">
                 <div class="main__block">
                     <div class="green__block-wrap">
