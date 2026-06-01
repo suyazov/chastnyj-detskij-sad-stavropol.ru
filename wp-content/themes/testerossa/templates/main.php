@@ -1,6 +1,7 @@
 <?php
 // Template Name: Main
 get_header(); ?>
+<main id="main-content" class="site-main">
 
 <?php
 
@@ -9,7 +10,7 @@ while (have_rows('build')) : the_row();
 
     if (get_row_layout() == 'main'): ?>
 
-        <div class="main-section">
+        <div class="main-section"><img src="/wp-content/uploads/2024/07/main.webp" class="main-section__bg" fetchpriority="high" width="1920" height="730" alt="Детский сад Дети в приоритете Ставрополь">
             <div class="container">
                 <div class="main__block">
                     <div class="green__block-wrap">
@@ -49,7 +50,7 @@ while (have_rows('build')) : the_row();
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="video__item ratio ratio-16x9">
-                            <a href="<?php the_sub_field('video'); ?>" data-fancybox="videopresentation">
+                            <a href="<?php the_sub_field('video'); ?>" data-fancybox="videopresentation" aria-label="Смотреть видео">
                                 <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100" width="1916" height="968" alt="Видео презентация" loading="lazy">
                                 <i class="fa-brands fa-youtube icon-play"></i>
                             </a>
@@ -108,7 +109,7 @@ while (have_rows('build')) : the_row();
                             <?php
                             while (have_rows('gallery_1_row')) : the_row(); ?>
                                 <div class="swiper-slide">
-                                    <a href="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" data-fancybox="gallery-2"><img
+                                    <a href="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" data-fancybox="gallery-2" aria-label="Открыть фотографии интерьеров"><img
                                             src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt=""></a>
                                 </div>
                             <?php endwhile; ?>
@@ -220,7 +221,7 @@ while (have_rows('build')) : the_row();
                             <?php $images = get_sub_field('gallery');
                             foreach ($images as $image) : ?>
                                 <div class="swiper-slide">
-                                    <a href="<?php echo testerossa_get_image_url($image); ?>" data-fancybox="gallery-1"><img
+                                    <a href="<?php echo testerossa_get_image_url($image); ?>" data-fancybox="gallery-1" aria-label="Открыть фотографии помещения"><img
                                             src="<?php echo testerossa_get_image_url($image); ?>" alt=""></a>
                                 </div>
                             <?php endforeach; ?>
@@ -412,4 +413,5 @@ while (have_rows('build')) : the_row();
 <?php endif;
 endwhile;
 ?>
+</main>
 <?php get_footer(); ?>

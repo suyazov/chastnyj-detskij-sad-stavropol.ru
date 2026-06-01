@@ -228,3 +228,32 @@ function testerossa_smtp_setup( $phpmailer ) {
     $phpmailer->Encoding   = 'base64';
     $phpmailer->Timeout    = 10;
 }
+
+/**
+ * CF7 submission logging — diagnostic
+ */
+add_action( "wpcf7_mail_sent", "testerossa_cf7_log_sent", 10, 1 );
+function testerossa_cf7_log_sent( $contact_form ) {
+    $log = "[" . date("Y-m-d H:i:s") . "] CF7 mail SENT OK\n";
+    error_log( $log, 3, ABSPATH . "wp-content/uploads/cf7-logs.log" );
+}
+
+add_action( "wpcf7_mail_failed", "testerossa_cf7_log_failed", 10, 3 );
+function testerossa_cf7_log_failed( $contact_form, $mail, $error ) {
+    $log = "[" . date("Y-m-d H:i:s") . "] CF7 mail FAILED: " . print_r( $error, true ) . "\n";
+    error_log( $log, 3, ABSPATH . "wp-content/uploads/cf7-logs.log" );
+}
+
+add_action( "wpcf7_submit", "testerossa_cf7_log_submit", 10, 2 );
+function testerossa_cf7_log_submit( $contact_form, $result ) {
+    $status = $result["status"];
+    $data = isset( $result["posted_data"] ) ? $result["posted_data"] : array();
+    $log = "[" . date("Y-m-d H:i:s") . "] CF7 submit status={$status} data=" . json_encode( $data, JSON_UNESCAPED_UNICODE ) . "\n";
+    error_log( $log, 3, ABSPATH . "wp-content/uploads/cf7-logs.log" );
+}
+
+/**
+ * Disable CF7 built-in spam detection — we use honeypot + timestamp instead
+ * CF7 marks submissions as spam when reCAPTCHA response is empty
+ */
+add_filter( "wpcf7_spam", "__return_false" );

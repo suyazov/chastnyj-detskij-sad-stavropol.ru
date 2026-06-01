@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // With defer, libraries may not be ready at DOMContentLoaded.
   // Use requestIdleCallback with polling fallback.
   function initDeferred() {
-    initSwipers();
-    initFancybox();
+    initOffcanvas();
     initAccordions();
     initTooltips();
     initSmoothScroll();
     initLcpOptimization();
     fixCf7Aria();
+    initLazyLibraries();
   }
 
   function pollUntilReady(fn, maxAttempts) {
@@ -175,13 +175,73 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // LCP image optimization — fetchpriority
+  // LCP image optimization — fetchpriority (main.webp is now the LCP hero)
   function initLcpOptimization() {
-    var lcpImg = document.querySelector("img[src*=\"screenshot_4\"]");
+    var lcpImg = document.querySelector("img.main-section__bg");
     if (lcpImg) {
-      lcpImg.setAttribute("fetchpriority", "high");
       lcpImg.removeAttribute("loading");
     }
+  }
+
+  // Vanilla Offcanvas — replaces Bootstrap JS (~80KB)
+  function initOffcanvas() {
+    document.querySelectorAll("[data-bs-toggle=\"offcanvas\"][data-bs-target]").forEach(function(trigger) {
+      trigger.addEventListener("click", function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute("data-bs-target"));
+        if (!target) return;
+        target.classList.add("show");
+        document.body.style.overflow = "hidden";
+      });
+    });
+    document.querySelectorAll("[data-bs-dismiss=\"offcanvas\"]").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var oc = this.closest(".offcanvas");
+        if (oc) {
+          oc.classList.remove("show");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+    document.querySelectorAll(".offcanvas").forEach(function(oc) {
+      oc.addEventListener("click", function(e) {
+        if (e.target === this) {
+          this.classList.remove("show");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+  }
+
+  // Lazy load Fancybox + Swiper only when gallery section is near viewport
+  function initLazyLibraries() {
+    var gallerySection = document.querySelector(".gallery-inter, .review");
+    if (!gallerySection || typeof IntersectionObserver === "undefined") return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          // Load Swiper CSS if not already loaded
+          var swiperLink = document.querySelector('link[href*="swiper"]');
+          if (swiperLink && swiperLink.media === "print") {
+            swiperLink.media = "all";
+          }
+          // Load Fancybox CSS if not already loaded
+          var fancyLink = document.querySelector('link[href*="fancybox"]');
+          if (fancyLink && fancyLink.media === "print") {
+            fancyLink.media = "all";
+          }
+          // Init Swiper and Fancybox after CSS loads
+          setTimeout(function() {
+            initSwipers();
+            initFancybox();
+          }, 200);
+        }
+      });
+    }, { rootMargin: "200px" });
+
+    observer.observe(gallerySection);
   }
 
   // Fix ARIA attributes in CF7 form
