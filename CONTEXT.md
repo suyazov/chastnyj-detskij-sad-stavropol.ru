@@ -104,7 +104,11 @@
 
 - **Speculation Rules API** — WordPress 6.4+ добавляет `<script type="speculationrules">`. Не блокирует рендеринг (JSON, не JS). Не удалён намеренно (полезен для prefetch).
 - **jquery.maskedinput.js** — загружается для CF7 phone mask, но main.js имеет vanilla JS маску. Можно удалить, если vanilla маска покрывает все поля.
-- **Postfix неактивен** — почтовый сервер не настроен. CF7 письма могут не отправляться. Рекомендуется: SMTP плагин (WP Mail SMTP) или активация Postfix.
+- **SMTP настроен** — Beget smtp.beget.com:465 (SSL), без плагина, через phpmailer_init в functions.php
+  - Отправитель: clients@chastnyj-detskij-sad-stavropol.ru
+  - Пароль: KajO%j3DBuV%
+  - Получатель (admin_email): gerasimromanoff@yandex.ru
+- **Postfix неактивен** — не нужен, используется SMTP через Beget
 - **WP_CRON отключён** — нужен системный cron: `*/5 * * * * cd /var/www/chastnyj-detskij-sad-stavropol.ru && php wp-cron.php > /dev/null 2>&1`
 
 ---

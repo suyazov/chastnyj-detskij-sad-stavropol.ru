@@ -207,3 +207,24 @@ function disable_recaptcha_scripts() {
     wp_dequeue_script( 'google-recaptcha' );
     wp_dequeue_script( 'wpcf7-recaptcha' );
 }
+
+/**
+ * SMTP configuration — Beget mail server (no plugin)
+ * From: clients@chastnyj-detskij-sad-stavropol.ru
+ * Server: smtp.beget.com:465 (SSL)
+ */
+add_action( 'phpmailer_init', 'testerossa_smtp_setup' );
+function testerossa_smtp_setup( $phpmailer ) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host       = 'smtp.beget.com';
+    $phpmailer->Port       = 465;
+    $phpmailer->SMTPSecure = 'ssl';
+    $phpmailer->SMTPAuth   = true;
+    $phpmailer->Username   = 'clients@chastnyj-detskij-sad-stavropol.ru';
+    $phpmailer->Password   = 'KajO%j3DBuV%';
+    $phpmailer->From       = 'clients@chastnyj-detskij-sad-stavropol.ru';
+    $phpmailer->FromName   = 'Детский сад Дети в приоритете';
+    $phpmailer->CharSet    = 'UTF-8';
+    $phpmailer->Encoding   = 'base64';
+    $phpmailer->Timeout    = 10;
+}
