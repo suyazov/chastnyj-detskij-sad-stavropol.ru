@@ -19,3 +19,7 @@ favicon.ico
 # Plugins and languages managed by Composer
 wp-content/plugins/
 wp-content/languages/
+twentytwentyfive/
+license.txt
+readme.html
+wp-content/debug.log
