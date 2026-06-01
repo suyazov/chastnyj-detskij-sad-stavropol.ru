@@ -114,6 +114,26 @@ document.addEventListener("DOMContentLoaded", function () {
   initDeferred();
   // Swiper + Fancybox loaded dynamically via initLazyLibraries (no more polling)
 
+  // Intercept clicks on [data-fancybox] — load Fancybox on demand if not ready yet
+  document.addEventListener("click", function(e) {
+    var link = e.target.closest("[data-fancybox]");
+    if (!link || typeof Fancybox !== "undefined") return;
+    e.preventDefault();
+    e.stopPropagation();
+    var href = link.getAttribute("href");
+    if (!libsLoaded) { libsLoaded = true; loadLibs(); }
+    var attempts = 0;
+    var check = setInterval(function() {
+      attempts++;
+      if (typeof Fancybox !== "undefined") {
+        clearInterval(check);
+        Fancybox.fromNode(link);
+      }
+      if (attempts > 40) clearInterval(check); // 2s timeout
+    }, 50);
+  }, true);
+
+
 
   // Accordion — chevron rotates via CSS on .icon
   function initAccordions() {
@@ -219,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(s);
   }
   function initLazyLibraries() {
-    var gallerySection = document.querySelector(".gallery-inter, .review");
+    var gallerySection = document.querySelector(".presentation, .gallery-inter, .review");
     if (!gallerySection || typeof IntersectionObserver === "undefined") {
       // Fallback: load immediately if no observer support
       if (!libsLoaded) { libsLoaded = true; loadLibs(); }
