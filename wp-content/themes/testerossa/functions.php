@@ -175,6 +175,34 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 }
 
 /**
+ * Get thumbnail URL from full-size image URL.
+ * Uses WordPress-generated -240x300 thumbnails for slider display.
+ */
+function testerossa_get_thumb_url( $url, $size = '240x300' ) {
+    if ( ! $url ) {
+        return '';
+    }
+    $path = wp_parse_url( $url, PHP_URL_PATH );
+    $ext  = pathinfo( $path, PATHINFO_EXTENSION );
+    $name = pathinfo( $path, PATHINFO_FILENAME );
+    $dir  = dirname( $path );
+    $thumb_path_rel = $dir . '/' . $name . '-' . $size . '.' . $ext;
+
+    // Check if thumbnail exists on disk (ABSPATH is /var/www/.../)
+    $thumb_disk = ABSPATH . ltrim( $thumb_path_rel, '/' );
+    if ( file_exists( $thumb_disk ) ) {
+        return esc_url( $thumb_path_rel );
+    }
+    // Fallback: try WebP version
+    $webp_path_rel = $dir . '/' . $name . '-' . $size . '.webp';
+    $webp_disk     = ABSPATH . ltrim( $webp_path_rel, '/' );
+    if ( file_exists( $webp_disk ) ) {
+        return esc_url( $webp_path_rel );
+    }
+    return esc_url( $url );
+}
+
+/**
  * Helper function to get image URL from ACF field
  */
 function testerossa_get_image_url( $image ) {
