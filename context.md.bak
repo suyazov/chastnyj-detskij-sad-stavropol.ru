@@ -1,0 +1,24 @@
+# Проект: chastnyj-detskij-sad-stavropol.ru
+
+## Сервер
+- SSH: `ssh serv` (85.198.97.13)
+- Путь: `/var/www/chastnyj-detskij-sad-stavropol.ru`
+
+## Текущие настройки
+
+### Nginx
+- SSL: Let's Encrypt
+- Стриминг видео: mp4 модуль включен + Accept-Ranges
+- Фавикон: /favicon.ico создан из logo.png
+
+### Исправленные проблемы
+1. Изображения 404 - скопированы недостающие файлы в uploads/2025/04/
+2. WebP редирект удален из nginx конфига
+3. Созданы WebP версии всех изображений
+
+## Плагины
+- Contact Form 7 (ID формы: 69)
+- Fancybox (UMD версия)
+
+## TODO
+- Настроить fancybox для галерей и видео
