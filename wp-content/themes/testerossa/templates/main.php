@@ -108,10 +108,13 @@ while (have_rows('build')) : the_row();
                     <div class="swiper swiper1">
                         <div class="swiper-wrapper">
                             <?php
-                            while (have_rows('gallery_1_row')) : the_row(); ?>
+                            while (have_rows('gallery_1_row')) : the_row();
+                                $full_url = testerossa_get_image_url(get_sub_field('img'));
+                                $thumb_url = testerossa_get_thumb_url($full_url);
+                            ?>
                                 <div class="swiper-slide">
-                                    <a href="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" data-fancybox="gallery-2" aria-label="Открыть фотографии интерьеров"><img
-                                            src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt=""></a>
+                                    <a href="<?php echo $full_url; ?>" data-fancybox="gallery-2" aria-label="Открыть фотографии интерьеров"><img
+                                            src="<?php echo $thumb_url; ?>" alt="" width="240" height="300" loading="lazy"></a>
                                 </div>
                             <?php endwhile; ?>
                         </div>
@@ -156,7 +159,7 @@ while (have_rows('build')) : the_row();
             <div class="container">
                 <h2><?php the_sub_field('title'); ?></h2>
                 <div class="method__block">
-                    <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
+                    <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" loading="lazy" width="800" height="500">
                     <?php the_sub_field('text'); ?>
                 </div>
 
@@ -176,10 +179,10 @@ while (have_rows('build')) : the_row();
                         </div>
                     </div>
                     <div class="schema__item green-border borrad-20 h-100 schema__item-2">
-                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_1')); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_1')); ?>" alt="" loading="lazy" width="400" height="400">
                     </div>
                     <div class="schema__item green-border borrad-20 h-100 schema__item-3">
-                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_2')); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_2')); ?>" alt="" loading="lazy" width="400" height="400">
                     </div>
                     <div class="schema__item green-border schema__item-4">
                         <div class="schema__head green-bg"><?php the_sub_field('title_2'); ?></div>
@@ -199,7 +202,7 @@ while (have_rows('build')) : the_row();
                         <p class="title-1"><?php the_sub_field('text_1'); ?>
                         </p>
                     </div>
-                    <div class="item item-2"><img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" class="boss-img">
+                    <div class="item item-2"><img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" class="boss-img" loading="lazy" width="400" height="400">
                     </div>
                     <div class="item item-3">
                         <p class="title-2"><?php the_sub_field('text_2'); ?></p>
@@ -220,10 +223,13 @@ while (have_rows('build')) : the_row();
                     <div class="swiper swiper1">
                         <div class="swiper-wrapper">
                             <?php $images = get_sub_field('gallery');
-                            foreach ($images as $image) : ?>
+                            foreach ($images as $image) :
+                                $full_url = testerossa_get_image_url($image);
+                                $thumb_url = testerossa_get_thumb_url($full_url);
+                            ?>
                                 <div class="swiper-slide">
-                                    <a href="<?php echo testerossa_get_image_url($image); ?>" data-fancybox="gallery-1" aria-label="Открыть фотографии помещения"><img
-                                            src="<?php echo testerossa_get_image_url($image); ?>" alt=""></a>
+                                    <a href="<?php echo $full_url; ?>" data-fancybox="gallery-1" aria-label="Открыть фотографии помещения"><img
+                                            src="<?php echo $thumb_url; ?>" alt="" width="240" height="300" loading="lazy"></a>
                                 </div>
                             <?php endforeach; ?>
 
@@ -247,7 +253,7 @@ while (have_rows('build')) : the_row();
                                 <div class="swiper-slide">
                                     <div class="review__item">
                                         <a data-fancybox="gallery" href="<?php the_sub_field('video'); ?>">
-                                            <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
+                                            <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" loading="lazy" width="240" height="300">
                                             <svg class="icon-play" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                         </a>
                                         <p class="title"><?php the_sub_field('name'); ?></p>
@@ -316,7 +322,7 @@ while (have_rows('build')) : the_row();
                         <p class="title-1"><?php the_sub_field('text_1'); ?>
                         </p>
                     </div>
-                    <div class="item item-2"><img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" class="boss-img">
+                    <div class="item item-2"><img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" class="boss-img" loading="lazy" width="400" height="400">
                     </div>
                     <div class="item item-3">
                         <p class="title-2"><?php the_sub_field('text_2'); ?></p>
@@ -353,7 +359,7 @@ while (have_rows('build')) : the_row();
                     <?php while (have_rows('adv_row')) : the_row(); ?>
                         <div class="col-md-4">
                             <div class="three__item">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" loading="lazy" width="120" height="120">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -368,7 +374,7 @@ while (have_rows('build')) : the_row();
 
                 <div class="cta__row">
                     <div class="cta__item cta__item-1">
-                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_1')); ?>" alt="">
+                        <img src="<?php echo testerossa_get_image_url(get_sub_field('img_1')); ?>" alt="" loading="lazy" width="300" height="400">
                         <p class="name"><?php the_sub_field('title_1'); ?></p>
                         <p class="desc"><?php the_sub_field('desc_1'); ?></p>
                     </div>

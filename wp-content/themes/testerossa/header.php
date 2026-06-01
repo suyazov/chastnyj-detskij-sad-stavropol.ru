@@ -22,7 +22,6 @@
     <?php endif; ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://ka-f.fontawesome.com">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
