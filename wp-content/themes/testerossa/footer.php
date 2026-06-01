@@ -52,6 +52,7 @@
 </div>
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
 </script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js" defer>
 <script src="<?php echo get_template_directory_uri(); ?>/js/swiper-bundle.min.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/fancybox.umd.js" defer></script>
 <?php wp_footer(); ?>
