@@ -20,11 +20,11 @@
     <meta name="description" content="Частный детский сад в Ставрополе. Оздоровительный образовательный комплекс с экскурсиями, аттракционами и профессиональными воспитателями.">
     <link rel="preload" as="image" href="/wp-content/uploads/2024/07/main.webp" fetchpriority="high">
     <?php endif; ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
-    <style>body{font-family:'Rubik',system-ui,-apple-system,sans-serif}</style>
+    <style>
+    @font-face{font-family:'Rubik';font-style:normal;font-weight:400;font-display:swap;src:url('<?php echo get_template_directory_uri(); ?>/fonts/rubik-400.woff2') format('woff2')}
+    @font-face{font-family:'Rubik';font-style:normal;font-weight:700;font-display:swap;src:url('<?php echo get_template_directory_uri(); ?>/fonts/rubik-700.woff2') format('woff2')}
+    body{font-family:'Rubik',system-ui,-apple-system,sans-serif}
+    </style>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
