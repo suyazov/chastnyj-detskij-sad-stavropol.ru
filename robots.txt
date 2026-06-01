@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /admin/
+Disallow: /user/
+Disallow: /wp-content/
+Disallow: /wp-content/

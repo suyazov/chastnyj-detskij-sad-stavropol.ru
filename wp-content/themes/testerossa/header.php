@@ -21,9 +21,9 @@
     <link rel="preload" as="image" href="/wp-content/uploads/2024/07/main.webp" fetchpriority="high">
     <?php endif; ?>
     <style>
-    @font-face{font-family:'Rubik';font-style:normal;font-weight:400;font-display:swap;src:url('<?php echo get_template_directory_uri(); ?>/fonts/rubik-400.woff2') format('woff2')}
-    @font-face{font-family:'Rubik';font-style:normal;font-weight:700;font-display:swap;src:url('<?php echo get_template_directory_uri(); ?>/fonts/rubik-700.woff2') format('woff2')}
-    body{font-family:'Rubik',system-ui,-apple-system,sans-serif}
+    @font-face{font-family:'Roboto';font-style:normal;font-weight:100 900;font-display:swap;src:url('<?php echo get_template_directory_uri(); ?>/fonts/roboto-cyrillic-ext.woff2') format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+    @font-face{font-family:'Roboto';font-style:normal;font-weight:100 900;font-display:swap;src:url('<?php echo get_template_directory_uri(); ?>/fonts/roboto-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+    body{font-family:'Roboto',system-ui,-apple-system,sans-serif}
     </style>
 
     <!-- Yandex.Metrika counter -->

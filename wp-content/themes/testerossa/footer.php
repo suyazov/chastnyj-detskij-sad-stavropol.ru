@@ -51,6 +51,8 @@
     </div>
 </div>
 <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/swiper-bundle.min.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/fancybox.umd.js" defer></script>
 <?php wp_footer(); ?>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/main.js" defer></script>
