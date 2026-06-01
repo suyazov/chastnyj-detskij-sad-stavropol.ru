@@ -57,7 +57,7 @@ while (have_rows('build')) : the_row();
                             </a>
 
                         </div>
-                        <a href="#" class="green-btn text-decoration-none">Записаться
+                        <a href="#cta" class="green-btn text-decoration-none">Записаться
                             на экскурсию</a>
                     </div>
                 </div>
@@ -124,7 +124,7 @@ while (have_rows('build')) : the_row();
                     <p class="inter__text">
                         <?php the_sub_field('text'); ?>
                     </p>
-                    <a href="#" class="green-btn">Узнать о садике больше</a>
+                    <a href="#cta" class="green-btn">Узнать о садике больше</a>
                 </div>
             </div>
         </section>
@@ -237,7 +237,7 @@ while (have_rows('build')) : the_row();
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-                    <a href="#" class="green-btn">Узнать о садике больше</a>
+                    <a href="#cta" class="green-btn">Узнать о садике больше</a>
                 </div>
             </div>
         </section>
@@ -285,7 +285,7 @@ while (have_rows('build')) : the_row();
                                 <div class="price__item">
                                     <p class="old-price"><?php the_sub_field('old_price'); ?></p>
                                     <p class="regular-price"><?php the_sub_field('price'); ?></p>
-                                    <a href="#" class="green-btn">Купить абонемент</a>
+                                    <a href="#cta" class="green-btn">Купить абонемент</a>
                                     <p class="price__item-bonus">Скидка на абонемент для второго ребёнка</p>
                                     <p class="price__item-bonus">Предусмотрен ежегодный взнос</p>
                                 </div>
