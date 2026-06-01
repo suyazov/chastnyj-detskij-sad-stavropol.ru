@@ -280,6 +280,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   padding-bottom: 120px;
+  min-height: 480px;
 }
 
 .green__block-wrap {

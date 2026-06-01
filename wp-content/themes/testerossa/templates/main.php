@@ -16,8 +16,8 @@ while (have_rows('build')) : the_row();
                     <div class="green__block-wrap">
                         <div class="green__block">
                             <div class="main-logo">
-                                <img src="/wp-content/uploads/2025/04/main-arrow.png" class="old-img" width="276" height="173">
-                                <img src="/wp-content/uploads/2024/07/logo-big.png" class="main-img" width="158" height="156">
+                                <img src="/wp-content/uploads/2025/04/main-arrow.png" class="old-img" width="276" height="173" alt="Стрелка декоративная">
+                                <img src="/wp-content/uploads/2024/07/logo-big.png" class="main-img" width="158" height="156" alt="Логотип Детский сад Дети в приоритете">
                             </div>
 
 
@@ -51,7 +51,7 @@ while (have_rows('build')) : the_row();
                     <div class="col-md-8">
                         <div class="video__item ratio ratio-16x9">
                             <a href="<?php the_sub_field('video'); ?>" data-fancybox="videopresentation" aria-label="Смотреть видео">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100" width="1916" height="968" alt="Видео презентация" loading="lazy">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100" width="960" height="484" alt="Видео презентация детского сада">
                                 <i class="fa-brands fa-youtube icon-play"></i>
                             </a>
 

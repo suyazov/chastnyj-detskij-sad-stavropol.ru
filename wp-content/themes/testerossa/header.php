@@ -18,7 +18,7 @@
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <?php if ( is_front_page() ): ?>
     <meta name="description" content="Частный детский сад в Ставрополе. Оздоровительный образовательный комплекс с экскурсиями, аттракционами и профессиональными воспитателями.">
-    <link rel="preload" as="image" href="/wp-content/uploads/2024/07/main.webp">
+    <link rel="preload" as="image" href="/wp-content/uploads/2024/07/main.webp" fetchpriority="high">
     <?php endif; ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
