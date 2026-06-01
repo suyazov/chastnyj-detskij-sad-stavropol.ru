@@ -16,12 +16,12 @@
     <div class="container">
         <div class="footer-1" itemscope itemtype="https://schema.org/Organization">
 
-            <p>© 2016 - <?php echo date('Y'); ?>. <span itemprop="name">«Дети в приоритете» - частный детский сад в
+            <p>&copy; 2016 - <?php echo date("Y"); ?>. <span itemprop="name">&laquo;Дети в приоритете&raquo; - частный детский сад в
                     Ставрополе</span></p>
 
             <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">Адрес: <span
                     itemprop="addressLocality">г. Ставрополь,</span> <span itemprop="streetAddress">ул. Партизанская,
-                    2</span> (ЖК «Александровский парк»)</p>
+                    2</span> (ЖК &laquo;Александровский парк&raquo;)</p>
 
         </div>
         <div class="footer-2">
@@ -43,21 +43,21 @@
         <?php
         wp_nav_menu(
             array(
-                'theme_location' => 'menu-1',
-                'menu_id' => 'primary-menu',
+                "theme_location" => "menu-1",
+                "menu_id" => "primary-menu",
             )
         );
         ?>
     </div>
 </div>
 <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
 </script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/swiper-bundle.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/fancybox.umd.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/swiper-bundle.min.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/fancybox.umd.js" defer></script>
 <?php wp_footer(); ?>
 
-<script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/main.js" defer></script>
 
 </body>
 

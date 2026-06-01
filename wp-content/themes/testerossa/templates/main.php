@@ -15,8 +15,8 @@ while (have_rows('build')) : the_row();
                     <div class="green__block-wrap">
                         <div class="green__block">
                             <div class="main-logo">
-                                <img src="/wp-content/uploads/2025/04/main-arrow.png" class="old-img">
-                                <img src="/wp-content/uploads/2024/07/logo-big.png" class="main-img">
+                                <img src="/wp-content/uploads/2025/04/main-arrow.png" class="old-img" width="276" height="173">
+                                <img src="/wp-content/uploads/2024/07/logo-big.png" class="main-img" width="158" height="156">
                             </div>
 
 
@@ -31,7 +31,7 @@ while (have_rows('build')) : the_row();
 
                         <div class="col-md-4">
                             <div class="main__item">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" class="main__item-img">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" class="main__item-img" loading="lazy" width="74" height="74">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ while (have_rows('build')) : the_row();
                     <div class="col-md-8">
                         <div class="video__item ratio ratio-16x9">
                             <a href="<?php the_sub_field('video'); ?>" data-fancybox="videopresentation">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100" width="1916" height="968" alt="Видео презентация" loading="lazy">
                                 <i class="fa-brands fa-youtube icon-play"></i>
                             </a>
 
@@ -70,7 +70,7 @@ while (have_rows('build')) : the_row();
                     while (have_rows('bullets_row')) : the_row(); ?>
                         <div class="col-md-4">
                             <div class="imagine__item">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" loading="lazy" width="91" height="90">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -87,7 +87,7 @@ while (have_rows('build')) : the_row();
                     while (have_rows('year_row')) : the_row(); ?>
                         <div class="col-md-3">
                             <div class="year__item">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="">
+                                <img src="<?php echo testerossa_get_image_url(get_sub_field('img')); ?>" alt="" loading="lazy" width="120" height="120">
                                 <?php the_sub_field('text'); ?>
                             </div>
                         </div>
@@ -331,7 +331,7 @@ while (have_rows('build')) : the_row();
                         <div class="accordeon__item">
                             <div class="accordeon__head">
                                 <div class="icon">
-                                    <img src="/wp-content/uploads/2025/04/down-arrow.png" alt="">
+                                    <img src="/wp-content/uploads/2025/04/down-arrow.png" alt="" width="90" height="90" loading="lazy">
                                 </div>
                                 <p><?php the_sub_field('title'); ?></p>
                             </div>

@@ -15,17 +15,31 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta charset="<?php bloginfo("charset"); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <?php if ( is_front_page() ): ?>
     <meta name="description" content="Частный детский сад в Ставрополе. Оздоровительный образовательный комплекс с экскурсиями, аттракционами и профессиональными воспитателями.">
     <link rel="preload" as="image" href="/wp-content/uploads/2024/04/screenshot_4.webp">
     <?php endif; ?>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+    window.addEventListener("load", function() {
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(82867762, "init", {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/82867762" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/swiper-bundle.min.css" media="print" onload="this.media='all'" />
-    <script src="<?php echo get_template_directory_uri(); ?>/js/fontawesome.js" crossorigin="anonymous"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/fontawesome.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/fancybox.css" media="print" onload="this.media='all'">
 
     <?php wp_head(); ?>
@@ -38,26 +52,26 @@
     <header class="header">
         <div class="container header__row">
             <a href="<?php echo home_url(); ?>" class="header__logo"><img src="/wp-content/uploads/2024/07/logo.png"
-                    alt="Частный детский сад"></a>
+                    alt="Частный детский сад" width="120" height="120"></a>
             <?php
             wp_nav_menu(
                 array(
-                    'theme_location' => 'menu-1',
-                    'menu_id' => 'primary-menu',
+                    "theme_location" => "menu-1",
+                    "menu_id" => "primary-menu",
                 )
             );
             ?>
 
             <div class="header__contact">
-                <a href="<?php the_field('tg', 'option'); ?>" class="header__contact-tg" aria-label="Telegram"><i
+                <a href="<?php the_field("tg", "option"); ?>" class="header__contact-tg" aria-label="Telegram"><i
                         class="fa-brands fa-telegram"></i></a>
-                <a href="<?php the_field('wa', 'option'); ?>" class="header__contact-wa" aria-label="WhatsApp"><i
+                <a href="<?php the_field("wa", "option"); ?>" class="header__contact-wa" aria-label="WhatsApp"><i
                         class="fa-brands fa-whatsapp"></i></a>
-                <a href="<?php the_field('vk', 'option'); ?>" class="header__contact-vk" aria-label="ВКонтакте"><i
+                <a href="<?php the_field("vk", "option"); ?>" class="header__contact-vk" aria-label="ВКонтакте"><i
                         class="fa-brands fa-vk"></i></a>
                 <div class="header__contact-phone">
                     <i class="icon fa-solid fa-phone" aria-label="Телефон"></i>
-                    <a href="tel:<?php the_field('tel_link', 'option'); ?>"><?php the_field('tel', 'option'); ?></a>
+                    <a href="tel:<?php the_field("tel_link", "option"); ?>"><?php the_field("tel", "option"); ?></a>
                 </div>
                 <a href="#" class="mobile-burger" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasTop" aria-label="Меню">
@@ -66,12 +80,3 @@
             </div>
         </div>
     </header>
-
-    <?php /*
-       wp_nav_menu(
-           array(
-               'theme_location' => 'menu-1',
-               'menu_id'        => 'primary-menu',
-           )
-       );
-       */ ?>

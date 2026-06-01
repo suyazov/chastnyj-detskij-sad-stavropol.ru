@@ -1293,3 +1293,45 @@ section h2 {
 .swiper-button-prev {
   top: 48%;
 }
+/* === CLS Fixes — added 2026-06-01 === */
+.main-section {
+  aspect-ratio: 16 / 7;
+  min-height: 400px;
+}
+
+.main__item img {
+  aspect-ratio: 1 / 1;
+}
+
+.imagine__item img {
+  aspect-ratio: 1 / 1;
+}
+
+.year__item img {
+  aspect-ratio: 1 / 1;
+}
+
+.method__block img {
+  aspect-ratio: 1 / 1;
+}
+
+.boss-img {
+  aspect-ratio: 1 / 1;
+}
+
+.review__item img {
+  aspect-ratio: 7 / 10;
+}
+
+.three__item img {
+  aspect-ratio: 1 / 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cta__item-1 img {
+  aspect-ratio: 1 / 1;
+}
