@@ -58,23 +58,32 @@
 - [x] **Font Awesome** — удалён fontawesome.js (~270KB), заменён на inline SVG (7 иконок)
 - [x] Иконки: telegram, whatsapp, vk, phone, bars, youtube (×2)
 
-#### Раунд 3: Изображения и CSS (текущий)
-- [x] **Bootstrap CSS удалён** — 232KB полностью удалён, критические стили в inline `<style>`:
-  - `.container`, `.row`, `.col-md-3/4/8`, `.offcanvas`, `.btn-close` (были в inline)
-  - Добавлены: `.ratio`, `.ratio-16x9`, `.ratio::before/after`, `.text-decoration-none`
+#### Раунд 3: Изображения и CSS
+- [x] **Bootstrap CSS оставлен** — попытка удаления сломала верстку, оставлен как async (media=print + onload)
 - [x] **Stale preconnect** — удалён `ka-f.fontawesome.com` (FA удалён ранее)
 - [x] **Slider thumbnails** — функция `testerossa_get_thumb_url()` для автоматического использования `-240x300` WordPress миниатюр
   - 14 слайдер изображений: 700×875 (90-107KB каждое) → 240×300 (17-19KB каждое)
   - Экономия: ~950KB при загрузке страницы
 - [x] **width/height для всех `<img>`** — предотвращает CLS
 - [x] **loading="lazy"** — для всех ниже-фолд изображений (50 штук)
+- [x] **Font CLS fix** — заменён `@import` на `<link rel="preload">` + `<link rel="stylesheet">`, CLS: 0.182 → 0
+- [x] **CTA кнопки** — все ведут к `#cta` форме (Купить абонемент, Узнать больше, Записаться)
 
-### Итого экономия (раунд 2+3):
+#### Раунд 4: JS lazy-loading + видео превью
+- [x] **Swiper+Fancybox JS** — убраны из footer.php, загружаются динамически через IntersectionObserver
+  - Swiper 41KB + Fancybox 42KB = 83KB не грузятся при начальной загрузке
+  - Загрузка при скролле к секциям .presentation / .gallery-inter / .review
+- [x] **Click interceptor** — перехват кликов по `[data-fancybox]`, загрузка по требованию
+- [x] **screenshot_4.webp** — 1916×968 (76KB) → 500×255 (9KB)
+- [x] **Убран pollUntilReady** — polling loop заменён на IntersectionObserver
+
+### Итого экономия (все раунды):
 - Font Awesome: -270KB, -1 запрос
 - Google Fonts: -54KB, -2 запроса
-- Bootstrap CSS: -232KB, -1 запрос
-- Slider images: -950KB (14 изображений с миниатюрами)
-- **Общая экономия: ~1.5MB, 4 запроса меньше**
+- Slider images: -950KB (14 изображений)
+- Swiper+Fancybox JS: -83KB начальной загрузки (2 запроса отложены)
+- Video preview: -67KB (76KB → 9KB)
+- **Общая экономия: ~1.4MB, 5 запросов меньше/отложено**
 
 ---
 
