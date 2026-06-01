@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Defer Swiper init to avoid forced reflow
+  // Swiper init
   function initSwipers() {
     if (typeof Swiper === "undefined") return;
     if (document.querySelector(".swiper1")) {
@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Fancybox init
   function initFancybox() {
     if (typeof Fancybox === "undefined") return;
     Fancybox.bind("[data-fancybox=\"gallery\"]", {
@@ -82,8 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // With defer, libraries may not be ready at DOMContentLoaded.
-  // Use requestIdleCallback with polling fallback.
+  // Init everything that doesn't depend on external libs
   function initDeferred() {
     initOffcanvas();
     initAccordions();
@@ -91,9 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
     initSmoothScroll();
     initLcpOptimization();
     fixCf7Aria();
-    initLazyLibraries();
   }
 
+  // Poll until Swiper + Fancybox are loaded via defer scripts
   function pollUntilReady(fn, maxAttempts) {
     var attempts = 0;
     function tryInit() {
@@ -110,30 +110,15 @@ document.addEventListener("DOMContentLoaded", function () {
     tryInit();
   }
 
-  // Init immediately
+  // Init non-library stuff immediately
   initDeferred();
 
-  // Swiper + Fancybox loaded via defer in footer — init when ready
+  // Wait for Swiper + Fancybox (loaded via defer in footer)
   pollUntilReady(function() {
     if (typeof Swiper === "undefined" || typeof Fancybox === "undefined") return;
     initSwipers();
     initFancybox();
   }, 10);
-    e.stopPropagation();
-    var href = link.getAttribute("href");
-    if (!libsLoaded) { libsLoaded = true; loadLibs(); }
-    var attempts = 0;
-    var check = setInterval(function() {
-      attempts++;
-      if (typeof Fancybox !== "undefined") {
-        clearInterval(check);
-        Fancybox.fromNode(link);
-      }
-      if (attempts > 40) clearInterval(check); // 2s timeout
-    }, 50);
-  }, true);
-
-
 
   // Accordion — chevron rotates via CSS on .icon
   function initAccordions() {
@@ -226,52 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
           this.classList.remove("show");
           document.body.style.overflow = "";
         }
-      });
-    });
-  }
-
-  // Lazy load Swiper + Fancybox JS/CSS only when gallery section is near viewport
-  var libsLoaded = false;
-  function loadScripts(src, cb) {
-    var s = document.createElement("script");
-    s.src = src;
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-  function initLazyLibraries() {
-    var gallerySection = document.querySelector(".presentation, .gallery-inter, .review");
-    if (!gallerySection || typeof IntersectionObserver === "undefined") {
-      // Fallback: load immediately if no observer support
-      if (!libsLoaded) { libsLoaded = true; loadLibs(); }
-      return;
-    }
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !libsLoaded) {
-          libsLoaded = true;
-          observer.disconnect();
-          loadLibs();
-        }
-      });
-    }, { rootMargin: "300px" });
-
-    observer.observe(gallerySection);
-  }
-  function loadLibs() {
-    // Activate async CSS
-    var swiperLink = document.querySelector('link[href*="swiper"]');
-    if (swiperLink && swiperLink.media === "print") swiperLink.media = "all";
-    var fancyLink = document.querySelector('link[href*="fancybox"]');
-    if (fancyLink && fancyLink.media === "print") fancyLink.media = "all";
-
-    var templateUri = document.querySelector('[src*="main.js"]');
-    var base = templateUri ? templateUri.src.replace(/js\/main\.js.*/, "") : "/wp-content/themes/testerossa/";
-
-    loadScripts(base + "js/swiper-bundle.min.js", function() {
-      initSwipers();
-      loadScripts(base + "js/fancybox.umd.js", function() {
-        initFancybox();
       });
     });
   }
