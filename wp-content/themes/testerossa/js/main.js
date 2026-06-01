@@ -93,32 +93,24 @@ document.addEventListener("DOMContentLoaded", function () {
     fixCf7Aria();
   }
 
-  // Poll until Swiper + Fancybox are loaded via defer scripts
-  function pollUntilReady(fn, maxAttempts) {
-    var attempts = 0;
-    function tryInit() {
-      attempts++;
-      fn();
-      if (attempts < maxAttempts) {
-        if (window.requestIdleCallback) {
-          requestIdleCallback(tryInit, { timeout: 500 });
-        } else {
-          setTimeout(tryInit, 100);
-        }
-      }
-    }
-    tryInit();
-  }
-
   // Init non-library stuff immediately
   initDeferred();
 
-  // Wait for Swiper + Fancybox (loaded via defer in footer)
-  pollUntilReady(function() {
-    if (typeof Swiper === "undefined" || typeof Fancybox === "undefined") return;
-    initSwipers();
-    initFancybox();
-  }, 10);
+  // Load Fancybox + Swiper AFTER first paint (Fancybox first — needed for video)
+  setTimeout(function() {
+    var mainScript = document.querySelector('script[src*="main.js"]');
+    var base = mainScript ? mainScript.src.replace(/js\/main\.js.*/, '') : '/wp-content/themes/testerossa/';
+    var s1 = document.createElement('script');
+    s1.src = base + 'js/fancybox.umd.js';
+    s1.onload = function() {
+      initFancybox();
+      var s2 = document.createElement('script');
+      s2.src = base + 'js/swiper-bundle.min.js';
+      s2.onload = function() { initSwipers(); };
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(s1);
+  }, 0);
 
   // Accordion — chevron rotates via CSS on .icon
   function initAccordions() {
