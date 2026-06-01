@@ -112,11 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Init immediately, then poll for deferred libraries
   initDeferred();
-  pollUntilReady(function() {
-    if (typeof Swiper === "undefined" || typeof Fancybox === "undefined") return;
-    initSwipers();
-    initFancybox();
-  }, 10);
+  // Swiper + Fancybox loaded dynamically via initLazyLibraries (no more polling)
+
 
   // Accordion — chevron rotates via CSS on .icon
   function initAccordions() {
@@ -213,35 +210,50 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Lazy load Fancybox + Swiper only when gallery section is near viewport
+  // Lazy load Swiper + Fancybox JS/CSS only when gallery section is near viewport
+  var libsLoaded = false;
+  function loadScripts(src, cb) {
+    var s = document.createElement("script");
+    s.src = src;
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
   function initLazyLibraries() {
     var gallerySection = document.querySelector(".gallery-inter, .review");
-    if (!gallerySection || typeof IntersectionObserver === "undefined") return;
+    if (!gallerySection || typeof IntersectionObserver === "undefined") {
+      // Fallback: load immediately if no observer support
+      if (!libsLoaded) { libsLoaded = true; loadLibs(); }
+      return;
+    }
 
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !libsLoaded) {
+          libsLoaded = true;
           observer.disconnect();
-          // Load Swiper CSS if not already loaded
-          var swiperLink = document.querySelector('link[href*="swiper"]');
-          if (swiperLink && swiperLink.media === "print") {
-            swiperLink.media = "all";
-          }
-          // Load Fancybox CSS if not already loaded
-          var fancyLink = document.querySelector('link[href*="fancybox"]');
-          if (fancyLink && fancyLink.media === "print") {
-            fancyLink.media = "all";
-          }
-          // Init Swiper and Fancybox after CSS loads
-          setTimeout(function() {
-            initSwipers();
-            initFancybox();
-          }, 200);
+          loadLibs();
         }
       });
-    }, { rootMargin: "200px" });
+    }, { rootMargin: "300px" });
 
     observer.observe(gallerySection);
+  }
+  function loadLibs() {
+    // Activate async CSS
+    var swiperLink = document.querySelector('link[href*="swiper"]');
+    if (swiperLink && swiperLink.media === "print") swiperLink.media = "all";
+    var fancyLink = document.querySelector('link[href*="fancybox"]');
+    if (fancyLink && fancyLink.media === "print") fancyLink.media = "all";
+
+    var templateUri = document.querySelector('[src*="main.js"]');
+    var base = templateUri ? templateUri.src.replace(/js\/main\.js.*/, "") : "/wp-content/themes/testerossa/";
+
+    loadScripts(base + "js/swiper-bundle.min.js", function() {
+      initSwipers();
+      loadScripts(base + "js/fancybox.umd.js", function() {
+        initFancybox();
+      });
+    });
   }
 
   // Fix ARIA attributes in CF7 form

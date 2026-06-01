@@ -52,7 +52,7 @@ while (have_rows('build')) : the_row();
                     <div class="col-md-8">
                         <div class="video__item ratio ratio-16x9">
                             <a href="<?php the_sub_field('video'); ?>" data-fancybox="videopresentation" aria-label="Смотреть видео">
-                                <img src="<?php echo testerossa_get_image_url(get_sub_field('preview')); ?>" class="ratio ratio-16x9 w-100" width="960" height="484" alt="Видео презентация детского сада">
+                                <img src="<?php echo testerossa_get_thumb_url(testerossa_get_image_url(get_sub_field('preview')), '500x255'); ?>" class="ratio ratio-16x9 w-100" width="500" height="255" alt="Видео презентация детского сада">
                                 <svg class="icon-play" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                             </a>
 
