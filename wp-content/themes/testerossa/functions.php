@@ -83,7 +83,7 @@ add_action( 'widgets_init', 'testerossa_widgets_init' );
  * Enqueue scripts and styles with defer support
  */
 function testerossa_scripts() {
-	wp_enqueue_style( 'testerossa-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'testerossa-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
 	wp_style_add_data( 'testerossa-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'testerossa-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );

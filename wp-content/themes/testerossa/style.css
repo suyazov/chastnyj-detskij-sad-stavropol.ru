@@ -1127,6 +1127,8 @@ section h2 {
 .review__item a {
   display: block;
   position: relative;
+  aspect-ratio: 7 / 10;
+  overflow: hidden;
 }
 
 .review__item .icon-play {
@@ -1348,8 +1350,11 @@ section h2 {
 }
 
 .review__item img {
-  aspect-ratio: 7 / 10;
-  object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
 }
 
 .three__item img {
